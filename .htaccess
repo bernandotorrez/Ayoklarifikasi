@@ -1,0 +1,37 @@
+Options +FollowSymlinks
+
+RewriteBase /.
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^home.html$ index.php
+RewriteRule ^logout.html$ logout.php
+RewriteRule ^post.html$ post.php
+RewriteRule ^analisis.html$ analisis.php
+RewriteRule ^tentang.html$ tentang.php
+RewriteRule ^saran.html$ saran.php
+RewriteRule ^kontak.html$ kontak.php
+RewriteRule ^profil.html$ profil.php
+RewriteRule ^portofolio-bernand.html$ bernand.php
+RewriteRule ^verifikasi.html$ verifikasi.php
+RewriteRule ^admin.html$ akses_admin.php
+RewriteRule ^underconstruction.html$ konstruksi.php
+RewriteRule ^tutorial.html$ carapost.php
+RewriteRule ^vote.html$ totalvote.php
+RewriteRule ^panel.html$ admin_panel.php
+RewriteCond %{HTTP_HOST} ^ayoklarifikasi.com[nc]
+RewriteRule ^(.*)$ http://www.ayoklarifikasi.com/$1 [r=301,nc]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+Options All -Indexes
+ <Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+RewriteRule ^isu-([a-zA-Z0-9_-]+)\.html$ /isu.php?id=$1 [L]
+RewriteRule ^polling-([a-zA-Z0-9_-]+)-([^-]*)\.html$ /isu.php?&id=$1&polling=$2 [L]
+RewriteRule ^analisis-([^-]*)-page-([^-]*)\.html$ /analisis.php?search=$1&page=$2
+RewriteRule ^analisis-([^-]*)\.html$ /analisis.php?search=$1
+RewriteRule ^home-page-([^-]*)\.html$ /index.php?page=$1
